@@ -18,7 +18,7 @@ LIGHT_RED="\033[1;31m"
 LIGHT_PURPLE="\033[1;35m"
 YELLOW="\033[1;33m"
 WHITE="\033[1;37m"
-RESET="\033[9m"
+RESET="\033[0m"
 
 # enable color support of ls
 [[ -x /usr/bin/dircolors ]] && eval "`dircolors -b`"
