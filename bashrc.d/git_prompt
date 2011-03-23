@@ -35,10 +35,10 @@ git_prompt_extended() {
 
 # Use normal prompt
 use_git_normal_prompt() {
-    PS1="$BLUE_BOLD\u$BLUE@\h:$LIGHT_GRAY\w$GREEN\$(git_prompt)$WHITE\$ "
+    PS1="$LIGHT_BLUE\u$BLUE@\h:$LIGHT_GRAY\w$GREEN\$(git_prompt)$LIGHT_GRAY\$ "
 }
 
 # Use extended prompt
 use_git_extended_prompt() {
-    PS1="$BLUE_BOLD\u$BLUE@\h:$LIGHT_GRAY\w$GREEN\$(git_prompt_extended)$WHITE\$ "
+    PS1="$LIGHT_BLUE\u$BLUE@\h:$LIGHT_GRAY\w$GREEN\$(git_prompt_extended)$LIGHT_GRAY\$ "
 }
