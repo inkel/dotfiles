@@ -1,32 +1,35 @@
 #! /bin/bash
 # -*- shell-script -*-
 
+# As I'm using hub I don't want to execute a Ruby script
+GIT=$(which git)
+
 # Get current branch
 git_branch() {
-    ref=$(git symbolic-ref -q HEAD 2> /dev/null) || return
+    ref=$($GIT symbolic-ref -q HEAD 2> /dev/null) || return
     echo -n "${ref#refs/heads/}"
 }
 
 # Return "*" if repository is dirty
 git_dirty() {
-    [[ -z $(git diff --shortstat | tail -n1) ]] || echo -n "*"
+    [[ -z $($GIT diff --shortstat | tail -n1) ]] || echo -n "*"
 }
 
-# Return a condensed output of git status -s -unormal
+# Return a condensed output of $GIT status -s -unormal
 git_status() {
     local status
-    status=$(git status -s -unormal | grep -oE ^.. | awk '{S[$1]+=1}END{for(s in S) print s ":" S[s]}' | paste -sd\| )
+    status=$($GIT status -s -unormal | grep -oE ^.. | awk '{S[$1]+=1}END{for(s in S) print s ":" S[s]}' | paste -sd\| )
     [[ -z $status ]] || echo "[$status]"
 }
 
-# Display current git branch and if dirty or not
+# Display current branch and if dirty or not
 git_prompt() {
     local branch
     branch=$(git_branch)
     [[ -z $branch ]] || echo -n " (${branch}$(git_dirty))"
 }
 
-# Display current git branch and extended status
+# Display current branch and extended status
 git_prompt_extended() {
     local branch
     branch=$(git_branch)
@@ -35,10 +38,10 @@ git_prompt_extended() {
 
 # Use normal prompt
 use_git_normal_prompt() {
-    PS1="$LIGHT_BLUE\u$BLUE@\h:$LIGHT_GRAY\w$GREEN\$(git_prompt)$LIGHT_GRAY\$ "
+    PS1="\n$LIGHT_BLUE\u$BLUE@\h:$LIGHT_GRAY\w$GREEN\$(git_prompt)$LIGHT_GRAY\n\$ "
 }
 
 # Use extended prompt
 use_git_extended_prompt() {
-    PS1="$LIGHT_BLUE\u$BLUE@\h:$LIGHT_GRAY\w$GREEN\$(git_prompt_extended)$LIGHT_GRAY\$ "
+    PS1="\n$LIGHT_BLUE\u$BLUE@\h:$LIGHT_GRAY\w$GREEN\$(git_prompt_extended)$LIGHT_GRAY\n\$ "
 }
