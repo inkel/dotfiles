@@ -17,4 +17,4 @@ alias e='emacs -Q -nw'
 [[ -n $(which ack-grep) ]] && alias ack='ack-grep'
 
 # https://github.com/inkel/hub
-[[ -n $(which hub) ]] && alias git='hub'
+# [[ -n $(which hub) ]] && alias git='hub'
