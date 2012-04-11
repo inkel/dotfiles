@@ -1,6 +1,6 @@
 # -*- shell-script -*-
 
-alias ls='ls --color=auto'
+alias ls='ls -G'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias ll='ls -lh'
