@@ -17,9 +17,6 @@ export GREP_OPTIONS="--color=auto"
 
 export EDITOR="emacsclient --alternate-editor='' --tty"
 
-. "${HOME}/.bashrc.d/misc"
-. "${HOME}/.bashrc.d/history"
-. "${HOME}/.bashrc.d/colors"
 . "${HOME}/.bashrc.d/completion"
 . "${HOME}/.bashrc.d/git_prompt" && use_git_normal_prompt
 
@@ -48,3 +45,21 @@ alias e=$EDITOR
 
 # Stupid Ubuntu
 [[ -n $(which ack-grep) ]] && alias ack='ack-grep'
+
+# Shell configuration
+
+# don't put duplicate lines in the history. See bash(1) for more options
+# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+# ... or force ignoredups and ignorespace
+export HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# enable color support of ls
+[[ -x /usr/bin/dircolors ]] && eval "`dircolors -b`"
