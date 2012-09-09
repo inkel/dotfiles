@@ -3,7 +3,20 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-. "${HOME}/.bashrc.d/variables"
+PATH="/usr/local/Cellar/ruby/1.9.3-p194/bin"
+PATH="${PATH}:/usr/local/bin:/usr/local/sbin"
+PATH="${PATH}:${HOME}/bin"
+PATH="${PATH}:/usr/bin:/bin:/usr/sbin:/sbin"
+PATH="${PATH}:/opt/X11/bin:/usr/X11/bin"
+export PATH
+
+export GTK_IM_MODULE=xim
+export QT_IM_MODULE=xim
+
+export GREP_OPTIONS="--color=auto"
+
+export EDITOR="emacsclient --alternate-editor='' --tty"
+
 . "${HOME}/.bashrc.d/misc"
 . "${HOME}/.bashrc.d/history"
 . "${HOME}/.bashrc.d/colors"
