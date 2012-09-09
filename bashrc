@@ -20,7 +20,6 @@ export EDITOR="emacsclient --alternate-editor='' --tty"
 . "${HOME}/.bashrc.d/misc"
 . "${HOME}/.bashrc.d/history"
 . "${HOME}/.bashrc.d/colors"
-. "${HOME}/.bashrc.d/aliases"
 . "${HOME}/.bashrc.d/completion"
 . "${HOME}/.bashrc.d/git_prompt" && use_git_normal_prompt
 
@@ -38,3 +37,14 @@ source /usr/local/share/git-core/contrib/completion/git-prompt.sh
 
 export PS1="\n\[\033[01;32m\]\w \[\033[1;33m\]\$(_gs_ps1)\[\033[01;31m\]\$(__git_ps1 \"(%s) \")\[\033[01;36m\]>>\[\033[00m\] "
 export PS1="\[\033[G\]$PS1"
+
+# Aliases
+alias ls='ls -G'
+alias ll='ls -lh'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias e=$EDITOR
+
+# Stupid Ubuntu
+[[ -n $(which ack-grep) ]] && alias ack='ack-grep'
