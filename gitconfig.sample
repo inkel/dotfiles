@@ -1,0 +1,65 @@
+# -*- mode: conf -*-
+
+[user]
+  email = YOUR_EMAIL
+  name  = YOUR_NAME
+[github]
+  user  = YOUR_GITHUB_USER
+  # token = YOUR_GITHUB_TOKEN
+	# password = YOUR_GITHUB_PASSWORD
+[alias]
+  br        = branch
+  bra       = branch -a
+  bram      = branch -a --merged
+  branm     = branch -a --no-merged
+  brm       = branch --merged
+  brnm      = branch --no-merged
+  ci        = commit
+  co        = checkout
+  d         = diff --patch-with-stat
+  di        = diff
+  dic       = diff --cached
+  l         = !git --no-pager log -1 --name-status
+  ll        = log --graph --pretty=format:'%Cblue%h%Creset -%C(yellow)%d%Creset %s - %C(yellow)%aN%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  ls        = !git --no-pager log --oneline --graph --date=short --decorate
+  m         = merge --no-ff --log --verbose --verbose --stat
+  mnc       = merge --no-ff --no-commit
+  pom       = push origin master
+  s         = status --short --branch
+  st        = status
+  today     = log --graph --pretty=format:'%Cblue%h%Creset -%C(yellow)%d%Creset %s - %C(yellow)%aN%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --since=midnight
+  yesterday = log --graph --pretty=format:'%Cblue%h%Creset -%C(yellow)%d%Creset %s - %C(yellow)%aN%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --since=yesterday --until=midnight
+	sl        = stash list
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local   = yellow
+  remote  = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old  = red bold
+  new  = green bold
+[color "status"]
+  added     = yellow
+  changed   = green
+  untracked = cyan
+[core]
+  editor = emacs -nw -Q
+	excludesfile = /Users/inkel/.gitignore
+[merge]
+  log = true
+[rerere]
+  enabled = 1
+# Replace here with your GitHub account and you can always be able to push to your own repos
+[url "git@github.com:inkel/"]
+  pushInsteadOf = git://github.com/inkel/
+[gck]
+  format = "--pretty=format:'%Cblue%h%Creset -%C(yellow)%d%Creset %s - %C(yellow)%aN%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+[push]
+  default = current
+[browser "gitscm"]
+	cmd = /bin/sh -c 'open http://git-scm.com/docs/$(basename $1 .html)' --
+[help]
+	browser = gitscm
