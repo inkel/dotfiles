@@ -17,14 +17,6 @@ export GREP_OPTIONS="--color=auto"
 
 export EDITOR="emacsclient --alternate-editor='' --tty"
 
-. "${HOME}/.bashrc.d/completion"
-. "${HOME}/.bashrc.d/git_prompt" && use_git_normal_prompt
-
-# for Git completion
-if [ -f /etc/bash_completion.d/git-completion.bash ]; then
-    source /etc/bash_completion.d/git-completion.bash
-fi
-
 # PS1
 _gs_ps1() {
     [[ -z $GS_NAME ]] || echo "[$GS_NAME] "
@@ -63,3 +55,30 @@ shopt -s checkwinsize
 
 # enable color support of ls
 [[ -x /usr/bin/dircolors ]] && eval "`dircolors -b`"
+
+# Completion
+for c in git-completion.bash bash-builtins
+do
+    if [[ -f /usr/local/etc/bash_completion.d/$c ]]; then
+        source /usr/local/etc/bash_completion.d/$c
+    elif [[ -f /etc/bash_completion.d/$c ]]; then
+        source /etc/bash_completion.d/$c
+    fi
+done
+
+__ssh_hosts() {
+    sort <([[ -f ~/.ssh/known_hosts ]] && awk '/^[a-zA-Z0-9]/ { print $1 }' ~/.ssh/known_hosts) \
+        <([[ -f ~/.ssh/config ]] && awk '/^Host(Name)? / { print $2 }' ~/.ssh/config) | grep -v \*
+}
+
+__ssh() {
+    local cur
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    if [[ ! $cur == -* ]]; then
+        COMPREPLY=( $(compgen -W "$(__ssh_hosts)" -- $cur) )
+        return 0
+    fi
+}
+
+complete -o bashdefault -o default -o nospace -F __ssh ssh scp 2> /dev/null \
+    || complete -o default -o nospace -F __ssh ssh scp
