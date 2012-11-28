@@ -14,6 +14,7 @@ bashrc.d/colors
 gemrc
 gitconfig.sample
 gitignore
+inputrc
 profile
 pryrc
 tmux.conf
