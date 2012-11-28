@@ -12,7 +12,7 @@ export QT_IM_MODULE=xim
 
 export GREP_OPTIONS="--color=auto"
 
-export EDITOR="emacsclient --alternate-editor='' --tty"
+export EDITOR="/usr/local/bin/emacsclient --alternate-editor='/usr/local/bin/emacs -q -nw'"
 
 # PS1
 _gs_ps1() {
