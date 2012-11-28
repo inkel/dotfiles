@@ -8,4 +8,5 @@
 --type-set=haml=.haml
 --ignore-dir=.gs
 --ignore-dir=vendor
+--ignore-dir=tmp
 --type-set=mote=.mote
