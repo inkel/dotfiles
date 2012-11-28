@@ -3,11 +3,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-PATH="/usr/local/Cellar/ruby/1.9.3-p194/bin"
-PATH="${PATH}:/usr/local/bin:/usr/local/sbin"
-PATH="${PATH}:${HOME}/bin"
-PATH="${PATH}:/usr/bin:/bin:/usr/sbin:/sbin"
-PATH="${PATH}:/opt/X11/bin:/usr/X11/bin"
+PATH="/Users/inkel/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/X11/bin:/usr/X11/bin"
+
 export PATH
 
 export GTK_IM_MODULE=xim
