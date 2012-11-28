@@ -19,7 +19,7 @@ _gs_ps1() {
     [[ -z $GS_NAME ]] || echo "[$GS_NAME] "
 }
 
-source /usr/local/share/git-core/contrib/completion/git-prompt.sh
+source /usr/local/etc/bash_completion.d/git-prompt.sh
 
 export PS1="\n\[\033[01;32m\]\w \[\033[1;33m\]\$(_gs_ps1)\[\033[01;31m\]\$(__git_ps1 \"(%s) \")\[\033[01;36m\]>>\[\033[00m\] "
 export PS1="\[\033[G\]$PS1"
