@@ -1,0 +1,18 @@
+#! /usr/bin/env bash
+
+# ~ >> defaults read com.apple.systemuiserver menuExtras
+# (
+#     "/System/Library/CoreServices/Menu Extras/iChat.menu",
+#     "/System/Library/CoreServices/Menu Extras/TimeMachine.menu",
+#     "/System/Library/CoreServices/Menu Extras/Bluetooth.menu",
+#     "/System/Library/CoreServices/Menu Extras/AirPort.menu",
+#     "/System/Library/CoreServices/Menu Extras/Volume.menu",
+#     "/System/Library/CoreServices/Menu Extras/Battery.menu",
+#     "/System/Library/CoreServices/Menu Extras/Clock.menu"
+# )
+
+defaults write com.apple.systemuiserver menuExtras -array \
+    "/System/Library/CoreServices/Menu Extras/iChat.menu" \
+    "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+    "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+    "/System/Library/CoreServices/Menu Extras/Clock.menu"
