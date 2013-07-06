@@ -1,12 +1,17 @@
 --type-add=html=.haml
 --type-add=html=.mote
 --type-add=html=.ctp
+--type-add=html=.jade
 --type-add=css=.sass
 --type-set=ctp=.ctp
 --type-set=rb=.rb
 --type-set=sass=.sass,.scss
 --type-set=haml=.haml
+--type-set=jade=.jade
 --ignore-dir=.gs
 --ignore-dir=vendor
 --ignore-dir=tmp
+--ignore-dir=coverage
 --type-set=mote=.mote
+--ignore-dir=public/assets
+--ignore-dir=node_modules
