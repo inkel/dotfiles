@@ -15,14 +15,13 @@ export GREP_OPTIONS="--color=auto"
 export EDITOR="/usr/local/bin/emacsclient --alternate-editor='/usr/local/bin/emacs -q -nw'"
 
 # PS1
-_gs_ps1() {
-    [[ -z $GS_NAME ]] || echo "[$GS_NAME] "
-}
-
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 
-export PS1="\n\[\033[01;32m\]\w \[\033[1;33m\]\$(_gs_ps1)\[\033[01;31m\]\$(__git_ps1 \"(%s) \")\[\033[01;36m\]>>\[\033[00m\] "
-export PS1="\[\033[G\]$PS1"
+__gs() {
+    [[ -z $GS_NAME ]] || echo -e "\[\e[0;35m\]{$GS_NAME}\[\e[0m\]"
+}
+
+PS1="\[\e[1;30m\]\u@\h\[\e[0m\] \[\e[0;36m\]\w\[\e[0m\]\$(__git_ps1 \" \[\e[1;33m\](%s)\[\e[0m\]\")\$([ -z \"$GS_NAME\" ] || echo -e \" \[\e[0;35m\]{$GS_NAME}\[\e[0m\]\") $(echo -e \\u21a9)\n$(echo -e \\u21fe) "
 
 # Aliases
 alias ls='ls -G'
